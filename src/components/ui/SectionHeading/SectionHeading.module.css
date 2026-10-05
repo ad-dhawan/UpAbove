@@ -1,0 +1,28 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-7);
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+  max-width: 720px;
+}
+
+.left {
+  align-items: flex-start;
+  max-width: 720px;
+}
+
+.title {
+  font-size: clamp(1.9rem, 4vw, var(--font-size-3xl));
+  font-weight: var(--font-weight-bold);
+}
+
+.description {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+}

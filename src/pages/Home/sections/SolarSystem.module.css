@@ -1,0 +1,190 @@
+/*
+ * Every size and position is in container units (cqw/cqh) so the whole
+ * system scales together with the space it is given.
+ */
+.system {
+  --sun-x: 92cqw;
+  --sun-y: 50cqh;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  container-type: size;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  /* Fades the outer orbits out before they reach the hero copy. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 22%);
+}
+
+.glow {
+  position: absolute;
+  left: var(--sun-x);
+  top: var(--sun-y);
+  width: 120cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(247, 195, 95, 0.3) 0%,
+    rgba(240, 139, 110, 0.12) 22%,
+    rgba(120, 100, 200, 0.05) 40%,
+    transparent 60%
+  );
+  translate: -50% -50%;
+}
+
+.sun {
+  position: absolute;
+  left: var(--sun-x);
+  top: var(--sun-y);
+  width: 34cqw;
+  max-width: none;
+  translate: -50% -50%;
+  filter: drop-shadow(0 0 3cqw rgba(247, 195, 95, 0.55));
+  animation: pulse 7s ease-in-out infinite;
+}
+
+/* ---------- Orbits & planets ---------- */
+.orbit {
+  position: absolute;
+  left: var(--sun-x);
+  top: var(--sun-y);
+  width: calc(var(--orbit) * 2cqw);
+  aspect-ratio: 1;
+  border: 1px solid rgba(200, 210, 255, 0.11);
+  border-radius: 50%;
+  translate: -50% -50%;
+}
+
+/* Spoke from the sun to the planet; rotating it slides the planet along the orbit. */
+.arm {
+  position: absolute;
+  inset: 0;
+  rotate: calc(var(--angle) * 1deg);
+  animation: drift calc(var(--drift) * 1s) ease-in-out infinite alternate;
+}
+
+.body {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: calc(var(--size) * 1cqw);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+}
+
+/* Cancels out the arm's rotation so rings stay level. */
+.upright {
+  position: absolute;
+  inset: 0;
+  rotate: calc(var(--angle) * -1deg);
+  animation: counter-drift calc(var(--drift) * 1s) ease-in-out infinite alternate;
+}
+
+.image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--ratio) * 100%);
+  max-width: none;
+  translate: -50% -50%;
+}
+
+/* Night side. Lives on the arm, so the lit side always faces the sun. */
+.shade {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 78% 50%, transparent 30%, rgba(4, 6, 15, 0.62) 92%);
+}
+
+.moonOrbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 240%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  animation: spin 16s linear infinite;
+}
+
+.moon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 18%;
+  max-width: none;
+  translate: -50% -50%;
+}
+
+/* ---------- Comet ---------- */
+.comet {
+  position: absolute;
+  top: -14cqw;
+  left: 80cqw;
+  width: 11cqw;
+  max-width: none;
+  opacity: 0;
+  animation: comet 18s ease-in 2s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    scale: 1.04;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: rotate(-4deg);
+  }
+  to {
+    transform: rotate(4deg);
+  }
+}
+
+@keyframes counter-drift {
+  from {
+    transform: rotate(4deg);
+  }
+  to {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes comet {
+  0% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  26%,
+  100% {
+    opacity: 0;
+    translate: -72cqw 72cqw;
+  }
+}
+
+@media (max-width: 900px) {
+  .system {
+    width: 100%;
+    opacity: 0.35;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}

@@ -1,0 +1,117 @@
+.card {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  backdrop-filter: blur(10px);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.open {
+  border-color: rgba(240, 139, 110, 0.5);
+  box-shadow: var(--shadow-md);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-6) var(--space-6);
+}
+
+.age {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+}
+
+.tagline {
+  margin-bottom: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+/* Animates height from 0 to auto using the grid-rows trick. */
+.details {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows var(--transition-base),
+    opacity var(--transition-base);
+}
+
+.open .details {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.detailsInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.description {
+  padding-top: var(--space-4);
+  color: rgba(245, 246, 251, 0.88);
+}
+
+.facts {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
+}
+
+.facts div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+}
+
+.facts dt {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.facts dd {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+}
+
+.subheading {
+  margin-bottom: var(--space-3);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+}
+
+.highlights {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  list-style: none;
+  font-size: var(--font-size-sm);
+}
+
+.highlights li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.highlights svg {
+  flex-shrink: 0;
+  color: var(--color-success);
+}

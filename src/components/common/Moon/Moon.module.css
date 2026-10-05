@@ -1,0 +1,32 @@
+.moon {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 62% 38%, rgba(255, 255, 255, 0.0) 0 30%, rgba(0, 0, 0, 0.08) 60%),
+    radial-gradient(ellipse 40% 26% at 38% 58%, rgba(120, 120, 135, 0.35), transparent 70%),
+    radial-gradient(ellipse 30% 22% at 66% 30%, rgba(120, 120, 135, 0.3), transparent 70%),
+    radial-gradient(circle at 35% 30%, #fbfaf4 0%, #e3e1d8 35%, #bdbbb2 70%, #8e8c86 100%);
+  box-shadow:
+    inset -0.12em -0.08em 0.22em rgba(10, 12, 30, 0.55),
+    0 0 0.25em rgba(255, 244, 220, 0.35),
+    0 0 0.6em rgba(240, 139, 110, 0.18);
+}
+
+.crater {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 60% 60%, #c9c7be 0%, #a9a79f 70%);
+  box-shadow:
+    inset 0.015em 0.015em 0.03em rgba(0, 0, 0, 0.35),
+    inset -0.01em -0.01em 0.02em rgba(255, 255, 255, 0.5);
+}
+
+.c1 { width: 0.18em; height: 0.18em; top: 22%; left: 24%; }
+.c2 { width: 0.1em; height: 0.1em; top: 18%; left: 58%; }
+.c3 { width: 0.24em; height: 0.24em; top: 52%; left: 56%; }
+.c4 { width: 0.08em; height: 0.08em; top: 64%; left: 26%; }
+.c5 { width: 0.12em; height: 0.12em; top: 40%; left: 40%; }
+.c6 { width: 0.07em; height: 0.07em; top: 76%; left: 48%; }

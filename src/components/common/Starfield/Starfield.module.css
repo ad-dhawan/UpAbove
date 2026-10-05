@@ -1,0 +1,38 @@
+.starfield {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+}
+
+.milkyWay {
+  position: absolute;
+  top: -20%;
+  left: 20%;
+  width: 70%;
+  height: 120%;
+  background:
+    radial-gradient(ellipse 30% 50% at 50% 50%, rgba(170, 160, 230, 0.16), transparent 70%),
+    radial-gradient(ellipse 18% 40% at 45% 45%, rgba(240, 190, 170, 0.1), transparent 70%);
+  transform: rotate(28deg);
+  filter: blur(18px);
+}
+
+.twinkle {
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}

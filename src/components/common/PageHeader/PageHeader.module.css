@@ -1,0 +1,12 @@
+.header {
+  margin-top: var(--behind-navbar);
+  padding-block: calc(var(--navbar-height) + var(--space-8)) var(--space-6);
+}
+
+.inner {
+  position: relative;
+}
+
+.inner > header {
+  margin-bottom: 0;
+}

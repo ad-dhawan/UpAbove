@@ -1,0 +1,15 @@
+.galaxy {
+  pointer-events: none;
+}
+
+.spin {
+  transform-box: view-box;
+  transform-origin: center;
+  animation: spin 300s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}

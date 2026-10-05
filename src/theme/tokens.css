@@ -1,0 +1,82 @@
+/*
+ * UpAbove design tokens.
+ * Every colour, radius, shadow and spacing value used in the app comes from here,
+ * so the whole look can be re-themed by editing this one file.
+ */
+:root {
+  /* Typography */
+  --font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.75rem;
+  --font-size-display: clamp(2.75rem, 6vw, 4.75rem);
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Night-sky palette */
+  --color-bg: #070b1a;
+  --color-bg-deep: #04060f;
+  --color-bg-elevated: #0d1330;
+  --color-surface: rgba(18, 25, 56, 0.62);
+  --color-surface-hover: rgba(28, 37, 78, 0.75);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-strong: rgba(255, 255, 255, 0.28);
+
+  --color-text: #f5f6fb;
+  --color-text-muted: #aab1c9;
+  --color-text-subtle: #7c84a0;
+
+  /* Brand: sunset coral + starlight gold */
+  --color-primary: #f08b6e;
+  --color-primary-light: #f8b48d;
+  --color-primary-dark: #e2685f;
+  --color-on-primary: #1a0f14;
+  --color-accent: #e8b65c;
+  --color-success: #5fd3a0;
+  --color-danger: #ff7a85;
+
+  --gradient-primary: linear-gradient(90deg, var(--color-primary-light) 0%, var(--color-primary) 55%, var(--color-primary-dark) 100%);
+  --gradient-gold: linear-gradient(90deg, #f7c35f 0%, #f5a524 50%, #f08b4e 100%);
+  --gradient-text: linear-gradient(90deg, #f6a07e 0%, #f07c68 60%, #f0a07a 100%);
+  --gradient-horizon: linear-gradient(180deg, transparent 0%, rgba(240, 139, 110, 0.35) 70%, rgba(232, 182, 92, 0.45) 100%);
+
+  /* Shape */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 8px 28px rgba(240, 139, 110, 0.35);
+
+  /* Spacing (4px scale) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  /* Layout */
+  --container-width: 1200px;
+  --navbar-height: 72px;
+  /* Pulls a page's backdrop up underneath the sticky, translucent navbar. */
+  --behind-navbar: calc(-1 * var(--navbar-height));
+
+  /* Motion */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
