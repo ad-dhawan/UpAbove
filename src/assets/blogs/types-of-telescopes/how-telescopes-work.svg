@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" font-family="Montserrat, Arial, sans-serif" text-anchor="middle">
+  <rect width="1200" height="340" rx="24" fill="#0d1330"/>
+  <g stroke="#ffffff" stroke-opacity=".08"><path d="M400 30v280M800 30v280"/></g>
+  <g fill="#f5f6fb" font-weight="700" font-size="36"><text x="200" y="70">Refractor</text><text x="600" y="70">Reflector</text><text x="1000" y="70">Catadioptric</text></g>
+  <g fill="#e8b65c" font-weight="600" font-size="24"><text x="200" y="100">uses lenses</text><text x="600" y="100">uses mirrors</text><text x="1000" y="100">uses both</text></g>
+  <g fill="#aab1c9" font-size="23"><text x="200" y="305">Light goes straight through</text><text x="600" y="305">Light bounces back</text><text x="1000" y="305">Light folds in a short tube</text></g>
+  <g fill="none" stroke="#aab1c9" stroke-width="3">
+    <rect x="70" y="175" width="260" height="70" rx="6"/>
+    <rect x="440" y="175" width="270" height="70" rx="6"/>
+    <rect x="840" y="175" width="260" height="70" rx="6"/>
+  </g>
+  <g fill="#aab1c9">
+    <rect x="330" y="200" width="32" height="20" rx="3"/>
+    <rect x="470" y="140" width="20" height="35" rx="3"/>
+    <rect x="1100" y="200" width="32" height="20" rx="3"/>
+  </g>
+  <g fill="none" stroke="#e8b65c" stroke-width="2.5" stroke-linecap="round">
+    <path d="M15 185H70L330 210M15 210H330M15 235H70L330 210"/>
+    <path d="M410 185H697L480 208M410 235H697L480 212M480 210V150"/>
+    <path d="M800 185H1088L850 204M800 235H1088L850 216M850 205L1118 210M850 215L1118 210"/>
+  </g>
+  <ellipse cx="72" cy="210" rx="9" ry="38" fill="#8fc9ff" fill-opacity=".75"/>
+  <g fill="none" stroke="#f8b48d" stroke-width="7" stroke-linecap="round">
+    <path d="M703 179Q690 210 703 241"/>
+    <path d="M1094 179Q1084 195 1088 203M1088 217Q1084 225 1094 241"/>
+    <path d="M472 218L488 202"/>
+  </g>
+  <rect x="840" y="178" width="7" height="64" fill="#8fc9ff" fill-opacity=".6"/>
+  <rect x="846" y="200" width="7" height="20" rx="2" fill="#f8b48d"/>
+</svg>

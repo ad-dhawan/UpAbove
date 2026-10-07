@@ -6,6 +6,8 @@
 :root {
   /* Typography */
   --font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Hand-written accent font, used sparingly (e.g. blog call-out titles). */
+  --font-family-hand: 'Caveat', 'Comic Sans MS', cursive;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;

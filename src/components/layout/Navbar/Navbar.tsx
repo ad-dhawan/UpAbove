@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router'
+import { Logo } from '@/components/common/Logo/Logo'
 import { Button } from '@/components/ui/Button/Button'
 import { Icon } from '@/components/ui/Icon/Icon'
 import { mainNav } from '@/data/navigation'
@@ -17,7 +18,7 @@ export function Navbar() {
     <header className={styles.header}>
       <nav className={`container ${styles.nav}`} aria-label="Main">
         <Link to={paths.home} className={styles.brand} aria-label="UpAbove home" onClick={closeMenu}>
-          <Icon name="planet" size={28} strokeWidth={2} />
+          <Logo height={44} />
           <span>UpAbove</span>
         </Link>
 

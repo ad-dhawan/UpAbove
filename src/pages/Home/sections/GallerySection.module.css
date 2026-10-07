@@ -1,0 +1,64 @@
+.viewport {
+  overflow: hidden;
+  /* Fade the images in and out at the screen edges. */
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 45s linear infinite;
+}
+
+.viewport:hover .track,
+.viewport:focus-within .track {
+  animation-play-state: paused;
+}
+
+.list {
+  display: flex;
+  gap: var(--space-5);
+  margin: 0;
+  /* Trailing gap so the second copy starts exactly one gap after the first. */
+  padding: 0 var(--space-5) 0 0;
+  list-style: none;
+}
+
+.item {
+  flex: none;
+  height: 340px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.image {
+  display: block;
+  height: 100%;
+  width: auto;
+  transition: transform var(--transition-base);
+}
+
+.item:hover .image {
+  transform: scale(1.04);
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 760px) {
+  .item {
+    height: 240px;
+  }
+}
+
+/* Animations are disabled globally for reduced motion, so let people scroll the strip themselves. */
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    overflow-x: auto;
+  }
+}

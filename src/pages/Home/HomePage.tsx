@@ -3,8 +3,8 @@ import { AboutSection } from './sections/AboutSection'
 import { CertificateCta } from './sections/CertificateCta'
 import { FaqSection } from './sections/FaqSection'
 import { ExperiencesSection } from './sections/ExperiencesSection'
+import { GallerySection } from './sections/GallerySection'
 import { Hero } from './sections/Hero'
-import { LearningSection } from './sections/LearningSection'
 import { StatsBar } from './sections/StatsBar'
 
 export function HomePage() {
@@ -15,7 +15,7 @@ export function HomePage() {
       <Hero />
       <StatsBar />
       <ExperiencesSection />
-      <LearningSection />
+      <GallerySection />
       <AboutSection />
       <CertificateCta />
       <FaqSection />

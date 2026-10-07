@@ -114,6 +114,19 @@ const icons: Record<IconName, ReactNode> = {
       <path d="M21 15l-5-5L5 21" />
     </>
   ),
+  instagram: (
+    <>
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+      <circle cx="12" cy="12" r="4.25" />
+      <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+    </>
+  ),
+  whatsapp: (
+    <>
+      <path d="M3 21l1.65-4.8A9 9 0 1 1 7.9 19.4z" />
+      <path d="M9 8.6c0 3.4 3 6.4 6.4 6.4l.9-1.5-2-1-1 .8a5 5 0 0 1-2.6-2.6l.8-1-1-2z" />
+    </>
+  ),
 }
 
 interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name'> {

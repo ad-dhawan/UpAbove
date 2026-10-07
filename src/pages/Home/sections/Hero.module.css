@@ -42,6 +42,34 @@
   margin-top: var(--space-2);
 }
 
+.price {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+}
+
+.price strong {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-extrabold);
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.socialLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
 .scrollCue {
   position: absolute;
   left: 50%;

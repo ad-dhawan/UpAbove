@@ -38,6 +38,20 @@
   color: var(--color-text-muted);
 }
 
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.chevron {
+  transition: transform var(--transition-base);
+}
+
+.open .chevron {
+  transform: rotate(180deg);
+}
+
 /* Animates height from 0 to auto using the grid-rows trick. */
 .details {
   display: grid;
@@ -99,7 +113,7 @@
 .highlights {
   display: grid;
   gap: var(--space-2);
-  margin: 0 0 var(--space-6);
+  margin: 0 0 var(--space-2);
   padding: 0;
   list-style: none;
   font-size: var(--font-size-sm);

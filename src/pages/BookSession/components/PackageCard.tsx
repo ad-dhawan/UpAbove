@@ -1,6 +1,7 @@
 import { SessionImage } from '@/components/common/SessionImage/SessionImage'
 import { Button } from '@/components/ui/Button/Button'
 import { Icon } from '@/components/ui/Icon/Icon'
+import { paths } from '@/routes/paths'
 import type { SessionPackage } from '@/types'
 import { formatDuration } from '@/utils/format'
 import styles from './PackageCard.module.css'
@@ -23,15 +24,15 @@ export function PackageCard({ pkg, isOpen, onToggle }: PackageCardProps) {
         <h2 className={styles.title}>{pkg.title}</h2>
         <p className={styles.tagline}>{pkg.tagline}</p>
 
-        <Button
-          variant={isOpen ? 'outline' : 'primary'}
-          onClick={onToggle}
-          aria-expanded={isOpen}
-          aria-controls={detailsId}
-          fullWidth
-        >
-          {isOpen ? 'Hide details' : 'Book'}
-        </Button>
+        <div className={styles.actions}>
+          <Button variant="outline" onClick={onToggle} aria-expanded={isOpen} aria-controls={detailsId}>
+            {isOpen ? 'Hide details' : 'View details'}
+            <Icon name="chevronDown" size={16} className={styles.chevron} />
+          </Button>
+          <Button to={paths.bookDates(pkg.slug)}>
+            Book <Icon name="calendar" size={16} />
+          </Button>
+        </div>
 
         <div id={detailsId} className={styles.details} inert={!isOpen}>
           <div className={styles.detailsInner}>
@@ -56,6 +57,12 @@ export function PackageCard({ pkg, isOpen, onToggle }: PackageCardProps) {
                 </dt>
                 <dd>{pkg.includesCertificate ? 'Included' : 'Not included'}</dd>
               </div>
+              <div>
+                <dt>
+                  <Icon name="sparkles" size={16} /> Goodies
+                </dt>
+                <dd>Included</dd>
+              </div>
             </dl>
 
             <h3 className={styles.subheading}>What’s included</h3>
@@ -66,11 +73,6 @@ export function PackageCard({ pkg, isOpen, onToggle }: PackageCardProps) {
                 </li>
               ))}
             </ul>
-
-            {/* TODO: wire up the booking flow. Intentionally does nothing for now. */}
-            <Button size="lg" fullWidth>
-              Book this session
-            </Button>
           </div>
         </div>
       </div>

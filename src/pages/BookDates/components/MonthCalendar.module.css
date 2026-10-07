@@ -1,0 +1,185 @@
+.calendar {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  backdrop-filter: blur(10px);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.month {
+  font-size: var(--font-size-xl);
+}
+
+.navButton {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.navButton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.navButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.greatKey {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+  font-size: var(--font-size-xs);
+  color: var(--color-accent);
+}
+
+.dimKey {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}
+
+.dimSwatch {
+  width: 12px;
+  height: 12px;
+  border: 1px dashed rgba(255, 122, 133, 0.6);
+  border-radius: 3px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.weekday {
+  padding-bottom: var(--space-1);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-subtle);
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 92px;
+  padding: var(--space-2) var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.day:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-strong);
+  transform: translateY(-1px);
+}
+
+.day:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+
+.dim:disabled {
+  border-style: dashed;
+  border-color: rgba(255, 122, 133, 0.45);
+  background: repeating-linear-gradient(135deg, rgba(255, 122, 133, 0.06) 0 6px, transparent 6px 12px);
+}
+
+.dimIcon {
+  color: var(--color-danger);
+}
+
+.great {
+  border-color: rgba(232, 182, 92, 0.45);
+  background: rgba(232, 182, 92, 0.07);
+}
+
+.selected,
+.selected:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background: rgba(240, 139, 110, 0.16);
+  box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-glow);
+}
+
+.dayTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  padding-inline: 0.2rem;
+}
+
+.dayNumber {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.greatIcon {
+  color: var(--color-accent);
+}
+
+.planets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+  min-height: 13px;
+}
+
+@media (max-width: 600px) {
+  .calendar {
+    padding: var(--space-3);
+  }
+
+  .grid {
+    gap: 4px;
+  }
+
+  .day {
+    min-height: 76px;
+    padding: 0.35rem 0.15rem;
+  }
+
+  .moon {
+    --size: 22px !important;
+  }
+
+  .weekday {
+    font-size: 0.62rem;
+    letter-spacing: 0;
+  }
+}

@@ -1,0 +1,51 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: #fff;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.link:hover {
+  transform: translateY(-2px);
+  border-color: transparent;
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.pill {
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.instagram:hover {
+  background: linear-gradient(45deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%);
+  box-shadow: 0 6px 20px rgba(214, 41, 118, 0.4);
+}
+
+.whatsapp:hover {
+  background: #25d366;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+}

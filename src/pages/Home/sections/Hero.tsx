@@ -1,6 +1,8 @@
+import { SocialLinks } from '@/components/common/SocialLinks/SocialLinks'
 import { Badge } from '@/components/ui/Badge/Badge'
 import { Button } from '@/components/ui/Button/Button'
 import { Icon } from '@/components/ui/Icon/Icon'
+import { formatRupees, startingPrice } from '@/data/policies'
 import { paths } from '@/routes/paths'
 import { SolarSystem } from './SolarSystem'
 import styles from './Hero.module.css'
@@ -28,6 +30,13 @@ export function Hero() {
           <Button to={paths.experiences} variant="outline" size="lg">
             Explore Experiences
           </Button>
+        </div>
+        <p className={styles.price}>
+          Starting from <strong>{formatRupees(startingPrice)}</strong>
+        </p>
+        <div className={styles.social}>
+          <span className={styles.socialLabel}>Follow our sky adventures</span>
+          <SocialLinks variant="pill" />
         </div>
       </div>
 

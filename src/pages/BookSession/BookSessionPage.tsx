@@ -9,11 +9,12 @@ export function BookSessionPage() {
   useDocumentTitle('Book a Session')
   const [searchParams, setSearchParams] = useSearchParams()
 
-  // The expanded package lives in the URL (?package=slug) so it can be linked to.
-  const openSlug = searchParams.get('package')
+  // Expanded packages live in the URL (?package=a&package=b) so they can be linked to; any number can be open.
+  const openSlugs = searchParams.getAll('package')
 
   const toggle = (slug: string) => {
-    setSearchParams(openSlug === slug ? {} : { package: slug }, { replace: true, preventScrollReset: true })
+    const next = openSlugs.includes(slug) ? openSlugs.filter((s) => s !== slug) : [...openSlugs, slug]
+    setSearchParams({ package: next }, { replace: true, preventScrollReset: true })
   }
 
   return (
@@ -26,7 +27,7 @@ export function BookSessionPage() {
       <section className="section">
         <div className={`container ${styles.grid}`}>
           {sessionPackages.map((pkg) => (
-            <PackageCard key={pkg.id} pkg={pkg} isOpen={openSlug === pkg.slug} onToggle={() => toggle(pkg.slug)} />
+            <PackageCard key={pkg.id} pkg={pkg} isOpen={openSlugs.includes(pkg.slug)} onToggle={() => toggle(pkg.slug)} />
           ))}
         </div>
       </section>

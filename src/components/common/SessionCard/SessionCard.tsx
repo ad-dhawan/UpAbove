@@ -19,7 +19,7 @@ export function SessionCard({ session }: SessionCardProps) {
       <div className={styles.body}>
         <span className={styles.age}>{ageLabel}</span>
         <h3 className={styles.title}>
-          <Link to={paths.book(slug)} className={styles.link}>
+          <Link to={paths.bookDates(slug)} className={styles.link}>
             {title}
           </Link>
         </h3>
