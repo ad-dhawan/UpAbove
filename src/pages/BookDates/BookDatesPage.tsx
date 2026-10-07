@@ -10,7 +10,7 @@ import { NotFoundPage } from '@/pages/NotFound/NotFoundPage'
 import { paths } from '@/routes/paths'
 import { formatDuration } from '@/utils/format'
 import { MOON_PHASES } from '@/utils/sky'
-import { addMonths, monthKey, parseMonthKey } from './calendar'
+import { addMonths, firstCalendarMonth, parseMonthKey } from './calendar'
 import { DayDetails } from './components/DayDetails'
 import { MonthCalendar } from './components/MonthCalendar'
 import styles from './BookDatesPage.module.css'
@@ -20,7 +20,7 @@ export function BookDatesPage() {
   const pkg = sessionPackages.find((p) => p.slug === slug)
   useDocumentTitle(pkg ? `Pick a date — ${pkg.title}` : 'Lost in space')
   const [searchParams, setSearchParams] = useSearchParams()
-  const [firstMonth] = useState(() => monthKey(new Date()))
+  const [firstMonth] = useState(firstCalendarMonth)
 
   if (!pkg) return <NotFoundPage />
 

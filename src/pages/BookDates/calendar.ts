@@ -40,10 +40,25 @@ export const formatMonth = (key: string) => {
 export const isMoonTooDim = (year: number, month: number, day: number) =>
   getMoonPhase(new Date(year, month, day, 20)).illumination < bookingRules.minMoonIllumination
 
+/** First bookable day: the later of `bookingRules.opensOn` and today plus the notice period. */
+const earliestBookable = () => {
+  const today = new Date()
+  const notice = new Date(today.getFullYear(), today.getMonth(), today.getDate() + bookingRules.minNoticeDays)
+  const opens = parseDateKey(bookingRules.opensOn)
+  const opensOn = opens ? new Date(opens.year, opens.month, opens.day) : notice
+  return opensOn > notice ? opensOn : notice
+}
+
+/** `YYYY-MM` of the first month shown in the calendar. */
+export const firstCalendarMonth = () => {
+  const current = monthKey(new Date())
+  const start = bookingRules.opensOn.slice(0, 7)
+  return parseMonthKey(start) && start > current ? start : current
+}
+
 /** Whether an evening can be booked under `bookingRules`. */
 export const isBookable = (year: number, month: number, day: number) => {
-  const today = new Date()
-  const earliest = new Date(today.getFullYear(), today.getMonth(), today.getDate() + bookingRules.minNoticeDays)
+  const earliest = earliestBookable()
   const date = new Date(year, month, day)
   return (
     date >= earliest &&

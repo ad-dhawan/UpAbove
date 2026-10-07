@@ -28,6 +28,11 @@ export const pricingPolicy: PolicyItem[] = [
     title: '50% advance to confirm your slot',
     text: 'A 50% advance is mandatory at the time of booking. Your date is only confirmed once the advance is received.',
   },
+  {
+    icon: 'mapPin',
+    title: 'Available in Delhi, Gurgaon and Faridabad',
+    text: 'We currently run sessions only in Delhi, Gurgaon and Faridabad. Transportation charges are extra and vary depending on the distance and location.',
+  },
 ]
 
 export const cancellationPolicy: PolicyItem[] = [

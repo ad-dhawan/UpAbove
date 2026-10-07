@@ -2,6 +2,8 @@ import type { PlanetName, SkyForecast } from '@/utils/sky'
 
 /** Rules for which evenings can be booked. Edit these to open or close dates. */
 export const bookingRules = {
+  /** First evening that can be booked, as `YYYY-MM-DD`; the calendar starts at this month. */
+  opensOn: '2026-11-01',
   /** How many months ahead (including the current one) customers can browse. */
   monthsAhead: 12,
   /** Days of notice needed: 1 means the earliest bookable evening is tomorrow. */
@@ -9,7 +11,7 @@ export const bookingRules = {
   /** Weekdays with no sessions (0 = Sunday … 6 = Saturday). */
   closedWeekdays: [] as number[],
   /** Specific evenings that are already taken or unavailable, as `YYYY-MM-DD`. */
-  blockedDates: [] as string[],
+  blockedDates: ['2026-11-01', '2026-11-02', '2026-11-03'] as string[],
   /** Evenings when less than this fraction of the Moon is lit (0–1) can't be booked. */
   minMoonIllumination: 0.3,
 }
