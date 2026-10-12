@@ -4,8 +4,8 @@ import type { PlanetName, SkyForecast } from '@/utils/sky'
 export const bookingRules = {
   /** First evening that can be booked, as `YYYY-MM-DD`; the calendar starts at this month. */
   opensOn: '2026-11-01',
-  /** How many months ahead (including the current one) customers can browse. */
-  monthsAhead: 12,
+  /** Last evening that can be booked, as `YYYY-MM-DD`; later months show “Coming soon”. */
+  closesOn: '2026-12-31',
   /** Days of notice needed: 1 means the earliest bookable evening is tomorrow. */
   minNoticeDays: 1,
   /** Weekdays with no sessions (0 = Sunday … 6 = Saturday). */

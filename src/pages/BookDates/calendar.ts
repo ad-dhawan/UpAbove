@@ -56,12 +56,19 @@ export const firstCalendarMonth = () => {
   return parseMonthKey(start) && start > current ? start : current
 }
 
+/** `YYYY-MM` of the last month with bookable evenings; later months show “Coming soon”. */
+export const lastBookableMonth = () => bookingRules.closesOn.slice(0, 7)
+
+/** Whether a month is past `bookingRules.closesOn`, so its dates aren't open yet. */
+export const isComingSoon = (key: string) => key > lastBookableMonth()
+
 /** Whether an evening can be booked under `bookingRules`. */
 export const isBookable = (year: number, month: number, day: number) => {
   const earliest = earliestBookable()
   const date = new Date(year, month, day)
   return (
     date >= earliest &&
+    dateKey(year, month, day) <= bookingRules.closesOn &&
     !bookingRules.closedWeekdays.includes(date.getDay()) &&
     !bookingRules.blockedDates.includes(dateKey(year, month, day)) &&
     !isMoonTooDim(year, month, day)

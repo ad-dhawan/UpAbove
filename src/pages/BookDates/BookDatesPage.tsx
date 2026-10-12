@@ -3,14 +3,13 @@ import { Link, useParams, useSearchParams } from 'react-router'
 import { MoonPhase } from '@/components/common/MoonPhase/MoonPhase'
 import { Button } from '@/components/ui/Button/Button'
 import { Icon } from '@/components/ui/Icon/Icon'
-import { bookingRules } from '@/data/booking'
 import { sessionPackages } from '@/data/sessions'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { NotFoundPage } from '@/pages/NotFound/NotFoundPage'
 import { paths } from '@/routes/paths'
 import { formatDuration } from '@/utils/format'
 import { MOON_PHASES } from '@/utils/sky'
-import { addMonths, firstCalendarMonth, parseMonthKey } from './calendar'
+import { addMonths, firstCalendarMonth, lastBookableMonth, parseMonthKey } from './calendar'
 import { DayDetails } from './components/DayDetails'
 import { MonthCalendar } from './components/MonthCalendar'
 import styles from './BookDatesPage.module.css'
@@ -25,7 +24,8 @@ export function BookDatesPage() {
   if (!pkg) return <NotFoundPage />
 
   // Month and selected date live in the URL (?month=YYYY-MM&date=YYYY-MM-DD) so a choice can be shared.
-  const lastMonth = addMonths(firstMonth, bookingRules.monthsAhead - 1)
+  // One month past the last bookable one, which shows “Coming soon”.
+  const lastMonth = addMonths(lastBookableMonth() > firstMonth ? lastBookableMonth() : firstMonth, 1)
   const requested = searchParams.get('month')
   const month = requested && parseMonthKey(requested) && requested >= firstMonth && requested <= lastMonth ? requested : firstMonth
   const selectedDate = searchParams.get('date')
