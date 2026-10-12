@@ -1,5 +1,5 @@
 .logo {
   width: auto;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 10px rgba(140, 170, 255, 0.35));
+  filter: drop-shadow(0 0 10px rgba(200, 215, 255, 0.25));
 }

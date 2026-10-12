@@ -23,8 +23,7 @@ export function Footer() {
       <div className={`container ${styles.grid}`}>
         <div>
           <Link to={paths.home} className={styles.brand}>
-            <Logo height={48} />
-            UpAbove
+            <Logo height={36} />
           </Link>
           <p className={styles.tagline}>
             Bringing people closer to the night sky — one telescope, one question, one discovery at a time.

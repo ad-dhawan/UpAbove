@@ -127,7 +127,7 @@ export function AboutSection() {
               loading="lazy"
               decoding="async"
             />
-            <Logo height={34} className={styles.portraitBadge} />
+            <Logo variant="mark" height={34} className={styles.portraitBadge} />
           </figure>
 
           <div className={styles.teacherBody}>
