@@ -5,7 +5,8 @@ import { FaqSection } from './sections/FaqSection'
 import { ExperiencesSection } from './sections/ExperiencesSection'
 import { GallerySection } from './sections/GallerySection'
 import { Hero } from './sections/Hero'
-import { StatsBar } from './sections/StatsBar'
+// Stats bar hidden for now, restore when we have real numbers
+// import { StatsBar } from './sections/StatsBar'
 
 export function HomePage() {
   useDocumentTitle()
@@ -13,7 +14,7 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <StatsBar />
+      {/* <StatsBar /> */}
       <ExperiencesSection />
       <GallerySection />
       <AboutSection />
