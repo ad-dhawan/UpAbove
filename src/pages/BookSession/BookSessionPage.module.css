@@ -1,6 +1,22 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr));
-  align-items: start;
-  gap: var(--space-5);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* No row gap: the cards share rows through subgrid, and a gap here would open up inside every card. */
+  column-gap: var(--space-4);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid > * {
+    margin-bottom: var(--space-5);
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }

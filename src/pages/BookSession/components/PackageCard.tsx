@@ -19,26 +19,35 @@ export function PackageCard({ pkg, isOpen, onToggle }: PackageCardProps) {
     <article id={pkg.slug} className={`${styles.card} ${isOpen ? styles.open : ''}`}>
       <SessionImage slug={pkg.slug} alt={pkg.title} />
 
-      <div className={styles.body}>
-        <span className={styles.age}>{pkg.ageLabel}</span>
-        <h2 className={styles.title}>{pkg.title}</h2>
-        <p className={styles.tagline}>{pkg.tagline}</p>
+      <div className={`${styles.header} ${styles.pad}`}>
+        <div>
+          <span className={styles.age}>{pkg.ageLabel}</span>
+          <h2 className={styles.title}>{pkg.title}</h2>
+        </div>
+        <button
+          type="button"
+          className={styles.toggle}
+          onClick={onToggle}
+          aria-expanded={isOpen}
+          aria-controls={detailsId}
+          aria-label={`${isOpen ? 'Hide' : 'Show'} package details`}
+        >
+          <Icon name="chevronDown" size={18} className={styles.chevron} />
+        </button>
+      </div>
+      <p className={`${styles.tagline} ${styles.pad}`}>{pkg.tagline}</p>
 
-        <div className={styles.actions}>
-          <Button variant="outline" onClick={onToggle} aria-expanded={isOpen} aria-controls={detailsId}>
-            {isOpen ? 'Hide details' : 'View details'}
-            <Icon name="chevronDown" size={16} className={styles.chevron} />
-          </Button>
-          <Button to={paths.bookDates(pkg.slug)}>
-            Book <Icon name="calendar" size={16} />
-          </Button>
+      {/* Each details section is its own row of the shared grid, so the same sections line up across cards. */}
+      <div id={detailsId} className={styles.details} inert={!isOpen}>
+        <div className={styles.collapse}>
+          <div>
+            <p className={`${styles.description} ${styles.pad}`}>{pkg.description}</p>
+          </div>
         </div>
 
-        <div id={detailsId} className={styles.details} inert={!isOpen}>
-          <div className={styles.detailsInner}>
-            <p className={styles.description}>{pkg.description}</p>
-
-            <dl className={styles.facts}>
+        <div className={styles.collapse}>
+          <div>
+            <dl className={`${styles.facts} ${styles.pad}`}>
               <div>
                 <dt>
                   <Icon name="clock" size={16} /> Duration
@@ -64,7 +73,11 @@ export function PackageCard({ pkg, isOpen, onToggle }: PackageCardProps) {
                 <dd>Included</dd>
               </div>
             </dl>
+          </div>
+        </div>
 
+        <div className={styles.collapse}>
+          <div className={styles.pad}>
             <h3 className={styles.subheading}>What’s included</h3>
             <ul className={styles.highlights}>
               {pkg.highlights.map((item) => (
@@ -75,6 +88,12 @@ export function PackageCard({ pkg, isOpen, onToggle }: PackageCardProps) {
             </ul>
           </div>
         </div>
+      </div>
+
+      <div className={`${styles.book} ${styles.pad}`}>
+        <Button to={paths.bookDates(pkg.slug)} size="sm" fullWidth>
+          Book <Icon name="calendar" size={16} />
+        </Button>
       </div>
     </article>
   )

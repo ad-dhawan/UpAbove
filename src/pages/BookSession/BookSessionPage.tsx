@@ -2,6 +2,7 @@ import { useSearchParams } from 'react-router'
 import { PageHeader } from '@/components/common/PageHeader/PageHeader'
 import { sessionPackages } from '@/data/sessions'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { HelpCta } from './components/HelpCta'
 import { PackageCard } from './components/PackageCard'
 import styles from './BookSessionPage.module.css'
 
@@ -9,12 +10,12 @@ export function BookSessionPage() {
   useDocumentTitle('Book a Session')
   const [searchParams, setSearchParams] = useSearchParams()
 
-  // Expanded packages live in the URL (?package=a&package=b) so they can be linked to; any number can be open.
-  const openSlugs = searchParams.getAll('package')
+  // Details open and close for every package together, so the cards stay level. The open state
+  // lives in the URL (?package=slug) so links to a package show its details.
+  const isOpen = searchParams.has('package')
 
   const toggle = (slug: string) => {
-    const next = openSlugs.includes(slug) ? openSlugs.filter((s) => s !== slug) : [...openSlugs, slug]
-    setSearchParams({ package: next }, { replace: true, preventScrollReset: true })
+    setSearchParams(isOpen ? {} : { package: slug }, { replace: true, preventScrollReset: true })
   }
 
   return (
@@ -27,8 +28,11 @@ export function BookSessionPage() {
       <section className="section">
         <div className={`container ${styles.grid}`}>
           {sessionPackages.map((pkg) => (
-            <PackageCard key={pkg.id} pkg={pkg} isOpen={openSlugs.includes(pkg.slug)} onToggle={() => toggle(pkg.slug)} />
+            <PackageCard key={pkg.id} pkg={pkg} isOpen={isOpen} onToggle={() => toggle(pkg.slug)} />
           ))}
+        </div>
+        <div className="container">
+          <HelpCta />
         </div>
       </section>
     </>

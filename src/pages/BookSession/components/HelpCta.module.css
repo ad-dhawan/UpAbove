@@ -1,0 +1,45 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+  padding: var(--space-6) var(--space-7);
+  border: 1px solid rgba(232, 182, 92, 0.3);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(ellipse 60% 120% at 0% 50%, rgba(240, 139, 110, 0.18), transparent 70%),
+    var(--color-bg-elevated);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  color: var(--color-accent);
+  background: rgba(232, 182, 92, 0.12);
+}
+
+.copy {
+  flex: 1;
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  text-wrap: balance;
+}
+
+.text {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 760px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-6);
+  }
+}
