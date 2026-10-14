@@ -1,8 +1,22 @@
 .origin {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: var(--space-7);
-  align-items: start;
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+/* Near-opaque panels keep the starfield from showing through the body copy. */
+.why,
+.journey {
+  padding: var(--space-7);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(140, 110, 230, 0.14), transparent 55%),
+    rgba(10, 15, 36, 0.9);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
 .subheading {
@@ -12,13 +26,13 @@
 .why p {
   margin-top: var(--space-4);
   font-size: var(--font-size-lg);
-  line-height: 1.65;
-  color: rgba(245, 246, 251, 0.88);
+  line-height: 1.7;
+  color: var(--color-text);
 }
 
 .why strong {
   color: var(--color-primary-light);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
 }
 
 .pillars {
@@ -32,31 +46,21 @@
 
 .pillars li {
   padding: 0.45rem 1rem;
-  border: 1px solid rgba(232, 182, 92, 0.4);
+  border: 1px solid rgba(232, 182, 92, 0.55);
   border-radius: var(--radius-pill);
+  background: rgba(232, 182, 92, 0.1);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-accent);
 }
 
-/* Vertical timeline: a glowing line joins each step's icon. */
+/* Vertical timeline: a glowing line joins each step's icon to the next. */
 .journey {
-  position: relative;
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-6);
+  align-content: start;
   margin: 0;
-  padding: 0;
   list-style: none;
-}
-
-.journey::before {
-  content: '';
-  position: absolute;
-  top: 20px;
-  bottom: 20px;
-  left: 20px;
-  width: 2px;
-  background: linear-gradient(180deg, var(--color-primary-light), rgba(140, 110, 230, 0.6), transparent);
 }
 
 .step {
@@ -64,6 +68,16 @@
   display: grid;
   grid-template-columns: 42px 1fr;
   gap: var(--space-4);
+}
+
+.step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 42px;
+  bottom: calc(-1 * var(--space-6));
+  left: 20px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-primary-light), rgba(140, 110, 230, 0.6));
 }
 
 .stepIcon {
@@ -86,7 +100,8 @@
 .stepText {
   margin-top: var(--space-1);
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  line-height: 1.65;
+  color: rgba(245, 246, 251, 0.82);
 }
 
 .wonder {
@@ -248,7 +263,9 @@
     grid-template-columns: 1fr;
   }
 
-  .teacher {
+  .teacher,
+  .why,
+  .journey {
     padding: var(--space-6);
   }
 }
