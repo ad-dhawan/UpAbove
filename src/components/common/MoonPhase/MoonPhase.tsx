@@ -14,8 +14,7 @@ const pt = (x: number, y: number) => `${(50 + 50 * x).toFixed(2)}% ${(50 + 50 * 
  * on the phase). Lit side is on the right while waxing, as seen from the
  * northern hemisphere.
  */
-const shadowPolygon = (phase: number) => {
-  const cycle = phase / 8
+const shadowPolygon = (cycle: number) => {
   const k = Math.cos(cycle * 2 * Math.PI)
   const waxing = cycle <= 0.5
   const limbSide = waxing ? -1 : 1
@@ -32,18 +31,25 @@ const shadowPolygon = (phase: number) => {
   return `polygon(${points.join(', ')})`
 }
 
-const SHADOWS = MOON_PHASES.map((_, phase) => (phase === 4 ? 'none' : shadowPolygon(phase)))
+const SHADOWS = MOON_PHASES.map((_, phase) => shadowPolygon(phase / 8))
 
 interface MoonPhaseProps {
   /** 0–7, an index into MOON_PHASES (0 = New Moon, 4 = Full Moon). */
   phase: number
+  /**
+   * Exact position in the lunar cycle, 0–1 (0 = new, 0.5 = full). When given,
+   * the lit part is drawn to match it instead of the idealised named phase.
+   */
+  cycle?: number
   /** Diameter in px. */
   size?: number
   className?: string
 }
 
 /** The Home Page Moon artwork with its unlit part dimmed by an 80% black overlay. */
-export function MoonPhase({ phase, size = 32, className }: MoonPhaseProps) {
+export function MoonPhase({ phase, cycle, size = 32, className }: MoonPhaseProps) {
+  const clipPath = cycle === undefined ? SHADOWS[phase] : shadowPolygon(cycle)
+  const isFull = cycle === undefined ? phase === 4 : Math.abs(cycle - 0.5) < 0.005
   return (
     <span
       className={`${styles.moon} ${className ?? ''}`}
@@ -52,7 +58,7 @@ export function MoonPhase({ phase, size = 32, className }: MoonPhaseProps) {
       aria-label={MOON_PHASES[phase]}
     >
       <img src={moon} alt="" className={styles.image} draggable={false} />
-      {phase !== 4 && <span className={styles.shadow} style={{ clipPath: SHADOWS[phase] }} />}
+      {!isFull && <span className={styles.shadow} style={{ clipPath }} />}
     </span>
   )
 }

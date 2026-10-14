@@ -34,6 +34,8 @@ export interface SkyForecast {
   /** 0–7, an index into MOON_PHASES. */
   phase: number
   phaseName: MoonPhaseName
+  /** Position in the lunar cycle, 0–1 (0 = new, 0.5 = full). */
+  cycle: number
   /** Fraction of the Moon's disc that is lit, 0–1. */
   illumination: number
   /** Planets above the horizon at some point during the evening (roughly 7–11 pm). */
@@ -56,10 +58,11 @@ const moonAge = (date: Date) => {
 
 export const getMoonPhase = (date: Date) => {
   const age = moonAge(date)
+  const cycle = age / SYNODIC_MONTH
   // Each named phase is centred on its moment (e.g. Full Moon spans ±1/16 of a cycle around full).
-  const phase = Math.round((age / SYNODIC_MONTH) * 8) % 8
-  const illumination = (1 - Math.cos((age / SYNODIC_MONTH) * 2 * Math.PI)) / 2
-  return { phase, phaseName: MOON_PHASES[phase], illumination }
+  const phase = Math.round(cycle * 8) % 8
+  const illumination = (1 - Math.cos(cycle * 2 * Math.PI)) / 2
+  return { phase, phaseName: MOON_PHASES[phase], cycle, illumination }
 }
 
 /* ---------- Planets ---------- */

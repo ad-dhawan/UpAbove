@@ -113,7 +113,7 @@ export function MonthCalendar({
               const tooDim = isMoonTooDim(year, monthIndex, day);
               const isGreat = bookable && great?.test(sky);
               const isSelected = key === selectedDate;
-              const label = `${new Date(year, monthIndex, day).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })}: ${sky.phaseName}${
+              const label = `${new Date(year, monthIndex, day).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })}: ${sky.phaseName}, ${Math.round(sky.illumination * 100)}% lit${
                 sky.planets.length ? `, ${sky.planets.join(", ")} visible` : ""
               }${isGreat ? ", great night" : ""}${bookable ? "" : tooDim ? `, unavailable: ${DIM_REASON}` : ", unavailable"}`;
 
@@ -144,6 +144,7 @@ export function MonthCalendar({
                   </span>
                   <MoonPhase
                     phase={sky.phase}
+                    cycle={sky.cycle}
                     size={30}
                     className={styles.moon}
                   />

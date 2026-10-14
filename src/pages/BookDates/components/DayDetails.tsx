@@ -56,7 +56,7 @@ export function DayDetails({ pkg, date }: DayDetailsProps) {
       )}
 
       <div className={styles.moonRow}>
-        <MoonPhase phase={sky.phase} size={72} />
+        <MoonPhase phase={sky.phase} cycle={sky.cycle} size={72} />
         <div>
           <h3 className={styles.phaseName}>{sky.phaseName}</h3>
           <p className={styles.illumination}>{Math.round(sky.illumination * 100)}% lit</p>
